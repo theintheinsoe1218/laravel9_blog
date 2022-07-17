@@ -20,4 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(BlogController::class)->group(function(){
     Route::get('/','index')->name('blogs.index');
+    Route::get('/blogs/create',
+    'create')->name('blogs.create');
+    Route::post('/blogs/store', 'store')->name('blogs.store');
 });

@@ -22,10 +22,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('blogs.index') }}">Blogs</a>
+                            <a class="nav-link" href="{{ route('blogs.create') }}">Add Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">All Blogs</a>
+                            <a class="nav-link" href="{{ route('blogs.index') }}">All Blogs</a>
                         </li>
                     </ul>
                 </div>
