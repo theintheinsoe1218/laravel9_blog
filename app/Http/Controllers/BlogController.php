@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +17,8 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog=Blog::find($id);
-        return view('blogs.show',['blog'=>$blog]);
+        $comments=$blog->comments;
+        return view('blogs.show',['blog'=>$blog,'comments'=>$comments]);
     }
 
     public function create()
@@ -82,7 +84,16 @@ class BlogController extends Controller
 
         return to_route('blogs.index')->with('success', 'Blog Deleted Successfully');
 
+    }
 
+    public function addComment(Request $request,$id){
+        $blog=Blog::find($id);
 
+        $comment=new Comment();
+        $comment->comments=$request->comment;
+
+        $blog->comments()->save($comment);
+
+        return back()->with('success','Comment Added');
     }
 }
